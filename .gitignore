@@ -1,2 +1,3 @@
-aula05/node_modules
-aula05/package-lock.json
+*/coverage
+*/node_modules
+*/package-lock.json

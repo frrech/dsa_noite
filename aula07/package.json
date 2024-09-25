@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "Realiza Crud de produtos",
   "main": "main.js",
-  "type": "module",
   "scripts": {
     "start": "echo \"Error: no test specified\" && node main.js",
     "test": "jest --version"

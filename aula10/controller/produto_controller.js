@@ -1,20 +1,10 @@
-const express = require('express')
-const app = express()
-const port = 3000
 const produtoService = require('./service/produto_service');
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true}));
-
-app.get('/', (req, res) => {
-  res.send('Hello World!')
-})
-
-app.get('/produtos', (req, res)=> {
+function listar(req, res) {
     res.json(produtoService.listarProdutos())
-})
+}
 
-app.get('/produtos/:id', (req, res) => {
+function buscarID(req, res) {
   const id = req.params.id;
   try{
     res.json(produtoService.buscarID(id));
@@ -22,9 +12,9 @@ app.get('/produtos/:id', (req, res) => {
   catch(err){
     res.status(err.id).json(err);
   }
-})
+}
 
-app.post('/produtos', (req, res)=> {
+function inserir(req, res){
     const produto = req.body;
     try{
       const produtoInserido = produtoService.inserir(produto);
@@ -34,9 +24,9 @@ app.post('/produtos', (req, res)=> {
       res.status(err.id).json(err);
     }
     
-})
+}
 
-app.put('/produtos/:id', (req, res) => {
+function atualizar(req, res){
   const id = req.params.id;
   const produto = req.body;
   try{
@@ -47,9 +37,9 @@ app.put('/produtos/:id', (req, res) => {
     res.status(err.id).json(err);
   }
 
-})
+}
 
-app.delete('/produtos/:id', (req, res) => {
+function deletar(req, res){
   const id = req.params.id;
   try{
     const prodDeletado = produtoService.deletar(id);
@@ -58,8 +48,8 @@ app.delete('/produtos/:id', (req, res) => {
   catch(err){
     res.status(404).json(err);
   }
-})
+}
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+module.exports = {
+    inserir, listar, buscarID, atualizar, deletar
+};

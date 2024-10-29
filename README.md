@@ -1,3 +1,3 @@
 # dsa_noite
 ---
-Exercícios das aulas de Desenvolvimento de Serviços e APIs.
+Exercícios e trabalhos das aulas de Desenvolvimento de Serviços e APIs.

@@ -17,13 +17,13 @@ por um determinado nome, etc.
  */
 
 class Livro{
-    constructor(ISBN, nome, autor, editora, ano_publicacao, id){
+    constructor(ISBN, nome, autor, editora, ano_publicacao){
         this.ISBN = ISBN;
         this.nome = nome;
         this.autor = autor;
         this.editora = editora;
         this.ano_publicacao = ano_publicacao;
-        this.id = id;
+        this.id = 0;
     }
 }
 
@@ -50,19 +50,19 @@ function cadastraAutor(autor){
     return autor;
 }
 
-function alteraAutor(id, autor){
+function atualizaAutor(id, autor){
     if(!autor || !autor.nome || !autor.pais_origem || !lista) {
             return;
     }
     alterObj(id, array_autores, autor)
 }
 
-function deletaLivro(id){
-    deleteObj(id, array_livros);
-}
-
 function listaAutor(){
     return array_autores;
+}
+
+function deletaAutor(id){
+    deleteObj(id, array_autor);
 }
 
 function buscaAutorNome(nome){
@@ -93,14 +93,14 @@ function deletaLivro(id){
 function listaLivro(){
     return array_livros;
 }
-function listaLivrosAutor(nome_autor){
+function buscaLivrosAutor(nome_autor){
     return array_livros.filter((livro) => {
         let a1 = livro.autor.nome.toUpperCase();
         let a2 = nome_autor.toUpperCase();
         return (a1.search(a2) >= 0);
     });
 }
-function listaLivrosNome(nome){
+function buscaLivrosNome(nome){
     return array_livros.filter((livro) => {
         let a1 = livro.nome.toUpperCase();
         let a2 = nome.toUpperCase();
@@ -125,3 +125,8 @@ function alterObj(id, lista, obj){
     lista[indiceautor] = obj;
     return obj;
 }
+
+module.exports = {
+    cadastraAutor, atualizaAutor, listaAutor, deletaLivro, buscaAutorNome, cadastraLivro,
+    atualizaLivro, listaLivro, buscaLivrosAutor, buscaLivrosNome, deletaAutor
+};

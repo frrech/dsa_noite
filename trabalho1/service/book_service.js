@@ -1,29 +1,5 @@
 const bookRepository = require("../repository/book_repository");
 
-function listaAutor(){
-    return bookRepository.listaAutor();
-}
-
-function listaLivro(){
-    return bookRepository.listaLivro();
-}
-
-function listaLivrosAutor(nome_autor){
-    if(nome_autor){
-        return bookRepository.listaLivrosAutor(nome_autor);
-    } else {
-        throw {id: 404, msg: "Autor não encontrado"};
-    }
-}
-
-function listaLivrosNome(nome){
-    if(nome){
-        return bookRepository.listaLivrosNome(nome);
-    } else {
-        throw {id: 404, msg: "Livro não encontrado"};
-    }
-}
-
 function cadastraAutor(autor){
     if(autor && autor.nome && autor.pais_origem && autor.id){
         return bookRepository.cadastraAutor(autor);
@@ -56,5 +32,37 @@ function deletaAutor(id){
         return autor;
     } else {
         throw {id: 404, msg: "Autor não encontrado"};
+    }
+}
+
+function listaAutor(){
+    return bookRepository.listaAutor();
+}
+
+function listaLivro(){
+    return bookRepository.listaLivro();
+}
+
+function buscaLivrosAutor(nome_autor){
+    if(nome_autor){
+        return bookRepository.buscaLivrosAutor(nome_autor);
+    } else {
+        throw {id: 404, msg: "Autor não encontrado"};
+    }
+}
+
+function buscaLivrosNome(nome){
+    if(nome){
+        return bookRepository.buscaLivrosNome(nome);
+    } else {
+        throw {id: 404, msg: "Livro não encontrado"};
+    }
+}
+
+function buscaAutorNome(nome){
+    if(nome){
+        return bookRepository.buscaAutorNome(nome);
+    } else {
+        throw {id: 404, msg: "Livro não encontrado"};
     }
 }

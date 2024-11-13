@@ -57,12 +57,12 @@ function atualizaAutor(id, autor){
     alterObj(id, array_autores, autor)
 }
 
-function listaAutor(){
-    return array_autores;
-}
-
 function deletaAutor(id){
     deleteObj(id, array_autor);
+}
+
+function listaAutor(){
+    return array_autores;
 }
 
 function buscaAutorNome(nome){
@@ -127,6 +127,6 @@ function alterObj(id, lista, obj){
 }
 
 module.exports = {
-    cadastraAutor, atualizaAutor, listaAutor, deletaLivro, buscaAutorNome, cadastraLivro,
-    atualizaLivro, listaLivro, buscaLivrosAutor, buscaLivrosNome, deletaAutor
+    cadastraAutor, atualizaAutor, listaAutor,deletaAutor, buscaAutorNome, cadastraLivro,
+    atualizaLivro, listaLivro, deletaLivro, buscaLivrosAutor, buscaLivrosNome
 };
